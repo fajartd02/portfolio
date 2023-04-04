@@ -3,7 +3,7 @@ import React from 'react'
 
 function Header() {
   return (
-    <Flex>
+    <Flex p={8}>
         <Box>
             <Heading size='md'>fajarhamka.</Heading>
         </Box>
