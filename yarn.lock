@@ -1985,7 +1985,7 @@
   dependencies:
     "is-callable" "^1.1.3"
 
-"framer-motion@^10.12.2", "framer-motion@>=4.0.0":
+"framer-motion@>=4.0.0":
   "integrity" "sha512-DD3Ieqy4pjmL0qBtfNMqnU/IONchUqnhHtgFtu0Nq5jw7bhkksD/Cs4cNhLYd1vs7iB8Q+WInxuBeMmzIoA5Xg=="
   "resolved" "https://registry.npmjs.org/framer-motion/-/framer-motion-10.12.2.tgz"
   "version" "10.12.2"
