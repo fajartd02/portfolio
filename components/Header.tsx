@@ -67,6 +67,15 @@ function Header() {
             fajarhamka.
           </Heading>
         </Box>
+        <Box display={{ base: "block", md: "none" }}>
+          <IconButton
+            aria-label="Toggle navigation"
+            icon={<HamburgerIcon />}
+            size="md"
+            onClick={onOpen}
+            display={isOpen ? "none" : "flex"}
+          />
+        </Box>
         <Box display={{ base: "none", md: "block" }}>
           <Stack direction="row" spacing="4">
             {links.map((link) => (
@@ -78,31 +87,20 @@ function Header() {
                 {link.label}
               </Button>
             ))}
+            {isOpen ? null : (
+              <Box display={{ base: "none", md: "block" }} mr="4">
+                <IconButton
+                  aria-label="Toggle dark mode"
+                  icon={colorMode === "light" ? <MoonIcon /> : <SunIcon />}
+                  onClick={toggleColorMode}
+                  size="md"
+                />
+              </Box>
+            )}
           </Stack>
         </Box>
-        <Box>
-          {isOpen ? null : (
-            <Box display={{ base: "none", md: "block" }}>
-              <IconButton
-                aria-label="Toggle dark mode"
-                icon={colorMode === "light" ? <MoonIcon /> : <SunIcon />}
-                onClick={toggleColorMode}
-                size="md"
-                ml={{ md: "4" }}
-              />
-            </Box>
-          )}
-          <Box display={{ base: "block", md: "none" }}>
-            <IconButton
-              aria-label="Toggle navigation"
-              icon={<HamburgerIcon />}
-              size="md"
-              onClick={onOpen}
-              display={isOpen ? "none" : "flex"}
-            />
-          </Box>
-        </Box>
       </Flex>
+
       <Drawer
         isOpen={isDrawerOpen}
         placement="right"
@@ -132,10 +130,10 @@ function Header() {
                 width="full"
                 onClick={() => {
                   toggleColorMode();
-                  onClose();
                 }}
+                leftIcon={colorMode === "light" ? <MoonIcon /> : <SunIcon />}
               >
-                Toggle dark mode
+                {colorMode === "light" ? "Dark" : "Light"} Mode
               </Button>
             </Stack>
           </DrawerBody>
