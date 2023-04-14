@@ -17,14 +17,13 @@ import {
   Stack,
 } from "@chakra-ui/react";
 import { HamburgerIcon, MoonIcon, SunIcon } from "@chakra-ui/icons";
-import PersistentDrawer from "./PersistenceDrawer";
 
 function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const { colorMode, toggleColorMode } = useColorMode();
   const { isOpen: isDrawerOpen, onOpen, onClose } = useDisclosure();
 
-  const handleToggle = () => setIsOpen(!isOpen);
+  // const handleToggle = () => setIsOpen(!isOpen);
 
   const links = [
     {
@@ -106,7 +105,44 @@ function Header() {
           </Box>
         </Box>
       </Flex>
-      <PersistentDrawer />
+      <Drawer
+        isOpen={isDrawerOpen}
+        placement="right"
+        onClose={onClose}
+        size="sm"
+      >
+        <DrawerOverlay />
+        <DrawerContent>
+          <DrawerCloseButton />
+          <DrawerHeader>Menu</DrawerHeader>
+          <DrawerBody>
+            <Stack spacing="4">
+              {links.map((link) => (
+                <Button
+                  key={link.href}
+                  variant="ghost"
+                  onClick={() => {
+                    onClose();
+                  }}
+                  width="full"
+                >
+                  {link.label}
+                </Button>
+              ))}
+              <Button
+                variant="ghost"
+                width="full"
+                onClick={() => {
+                  toggleColorMode();
+                  onClose();
+                }}
+              >
+                Toggle dark mode
+              </Button>
+            </Stack>
+          </DrawerBody>
+        </DrawerContent>
+      </Drawer>
     </Box>
   );
 }
