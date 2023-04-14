@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import styles from "./hero.module.css";
 import { Box, Flex, Heading, Text } from "@chakra-ui/react";
 import { FaLaptopCode } from "react-icons/fa";
 
@@ -12,13 +12,16 @@ function Hero() {
       overflow="hidden"
     >
       <Box textAlign="center">
-        <motion.div
-          animate={{ y: [-20, 20, -20] }}
-          transition={{ repeat: Infinity, duration: 3 }}
-          style={{ display: "inline-block", marginRight: "10px" }}
+        <div
+          className={styles["move-up-down"]}
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            marginBottom: "10px",
+          }}
         >
           <FaLaptopCode size={80} color="#6B7280" />
-        </motion.div>
+        </div>
         <Heading as="h1" size="4xl">
           Fajar Muhammad Hamka
         </Heading>
