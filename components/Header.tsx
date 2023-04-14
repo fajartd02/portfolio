@@ -1,7 +1,6 @@
 import { useState } from "react";
 import {
   Flex,
-  Spacer,
   Box,
   Heading,
   Button,
@@ -16,9 +15,9 @@ import {
   DrawerHeader,
   DrawerBody,
   Stack,
-  Text,
 } from "@chakra-ui/react";
 import { HamburgerIcon, MoonIcon, SunIcon } from "@chakra-ui/icons";
+import PersistentDrawer from "./PersistenceDrawer";
 
 function Header() {
   const [isOpen, setIsOpen] = useState(false);
@@ -107,37 +106,7 @@ function Header() {
           </Box>
         </Box>
       </Flex>
-      <Drawer isOpen={isDrawerOpen} placement="right" onClose={onClose}>
-        <DrawerOverlay />
-        <DrawerContent>
-          <DrawerCloseButton display="none" />
-          <DrawerHeader>Menu</DrawerHeader>
-          <DrawerBody>
-            <Stack spacing="4">
-              {links.map((link) => (
-                <Button
-                  key={link.href}
-                  variant="ghost"
-                  onClick={onClose}
-                  width="full"
-                >
-                  {link.label}
-                </Button>
-              ))}
-              <Button
-                variant="ghost"
-                width="full"
-                onClick={() => {
-                  toggleColorMode();
-                  onClose();
-                }}
-              >
-                Toggle dark mode
-              </Button>
-            </Stack>
-          </DrawerBody>
-        </DrawerContent>
-      </Drawer>
+      <PersistentDrawer />
     </Box>
   );
 }
