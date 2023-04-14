@@ -23,8 +23,6 @@ function Header() {
   const { colorMode, toggleColorMode } = useColorMode();
   const { isOpen: isDrawerOpen, onOpen, onClose } = useDisclosure();
 
-  // const handleToggle = () => setIsOpen(!isOpen);
-
   const links = [
     {
       href: "/",
